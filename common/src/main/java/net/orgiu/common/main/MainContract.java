@@ -13,13 +13,11 @@ public class MainContract {
          * Whenever a new competition is started, this method is invoked, so that the View can
          * change its layout accordingly
          */
-        void onNewCompetitionCreated();
+        void onNewCompetitionCreated(String competitionName);
 
-        /**
-         * Whenever a competition ends, this method is invoked, so that the View can restore its
-         * previous state and show again the fields for the new instance
-         */
-        void onCompetitionEnded();
+        void onCompetitionNameVerified();
+
+        void onCompetitionNameInvalid();
     }
 
     /**
@@ -32,12 +30,11 @@ public class MainContract {
          * This method is the one that should be invoked when a new competition is needed to start
          * @param competitionName the name of the competition being saved
          */
-        void onCompetitionStarted(@NonNull String competitionName);
+        void onNewCompetitionCreated(@NonNull String competitionName);
+    }
 
-        /**
-         * This method is the one that will be invoked whenever the competition ends and shall
-         * free all the used resources and connections
-         */
-        void onCompetitionEnded();
+    public interface Model {
+
+        void onNewCompetitionCreated(@NonNull String competitionName);
     }
 }

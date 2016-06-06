@@ -1,7 +1,5 @@
 package net.orgiu.common.main;
 
-import net.orgiu.common.repository.RepositoryContract;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -15,27 +13,19 @@ public class MainPresenterTest {
     private MainContract.View mockView;
 
     @Mock
-    private RepositoryContract.Model mockModel;
+    private MainContract.Model mockModel;
 
     private MainContract.Presenter presenter;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        presenter = new MainPresenter(mockView, mockModel);
+        presenter = new MainPresenter(mockModel);
     }
 
     @Test
-    public void chooseNewCompetition_ViewAndModelUpdated() throws Exception {
-        presenter.onCompetitionStarted("");
-        verify(mockView).onNewCompetitionCreated();
-        verify(mockModel).onNewCompetition("");
-    }
-
-    @Test
-    public void chooseEndCompetition_ViewAndModelUpdated() throws Exception {
-        presenter.onCompetitionEnded();
-        verify(mockView).onCompetitionEnded();
-        verify(mockModel).onCompetitionEnded();
+    public void chooseNewCompetition_ModelUpdated() throws Exception {
+        presenter.onNewCompetitionCreated("TEST1");
+        verify(mockModel).onNewCompetitionCreated("TEST1");
     }
 }
