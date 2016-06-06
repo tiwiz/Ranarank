@@ -2,15 +2,15 @@ package net.orgiu.common.main;
 
 import android.support.annotation.NonNull;
 
-import net.orgiu.common.utils.StartingTimeModel;
+import net.orgiu.common.repository.RepositoryContract;
 
 
 public class MainPresenter implements MainContract.Presenter{
     private MainContract.View view;
-    private StartingTimeModel model;
+    private RepositoryContract.Model model;
 
     public MainPresenter(@NonNull MainContract.View view,
-                         @NonNull StartingTimeModel model) {
+                         @NonNull RepositoryContract.Model model) {
 
         this.view = view;
         this.model = model;
@@ -19,7 +19,7 @@ public class MainPresenter implements MainContract.Presenter{
     @Override
     public void onCompetitionStarted(@NonNull String competitionName) {
         view.onNewCompetitionCreated();
-        
+        model.onNewCompetition(competitionName);
     }
 
     @Override
