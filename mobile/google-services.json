@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "925921361173",
+    "firebase_url": "https://project-3880333093953712697.firebaseio.com",
+    "project_id": "project-3880333093953712697",
+    "storage_bucket": "project-3880333093953712697.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925921361173:android:cc43377e8c8837ab",
+        "android_client_info": {
+          "package_name": "net.orgiu.ranarank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925921361173-au8b8vinjvna24j5hkfeul93aj4j9gdg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTooj-W6iJeZ1BK38_6VG3L1bNguS9zjM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

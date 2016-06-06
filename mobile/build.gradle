@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "net.orgiu.ranarank2"
+        applicationId "net.orgiu.ranarank"
         minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
@@ -24,5 +25,6 @@ dependencies {
     wearApp project(':wear')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.google.android.gms:play-services:9.0.2'
+    compile 'com.google.android.gms:play-services:9.0.0'
+    compile 'com.google.firebase:firebase-database:9.0.0'
 }
