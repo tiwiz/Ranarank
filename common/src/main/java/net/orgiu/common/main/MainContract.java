@@ -38,6 +38,6 @@ public class MainContract {
          * This method is the one that will be invoked whenever the competition ends and shall
          * free all the used resources and connections
          */
-        void onCompetitionEndend();
+        void onCompetitionEnded();
     }
 }
