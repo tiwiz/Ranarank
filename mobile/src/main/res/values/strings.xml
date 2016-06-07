@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">RanaRank 2</string>
+    <string name="app_name">RanaRank</string>
     <string name="competition_name_hint_message">Insert competition name</string>
 </resources>
