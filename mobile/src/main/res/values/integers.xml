@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="number_of_allowed_characters_for_competition_name">20</integer>
+</resources>
