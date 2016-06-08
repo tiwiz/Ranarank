@@ -3,22 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:support="http://schemas.android.com/apk/res-auto"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="net.orgiu.ranarank2.MainActivity">
 
-    <include
-        android:id="@+id/layoutCompetitionName"
-        layout="@layout/layout_main_insert_name"
-        android:padding="@dimen/activity_horizontal_margin"
-        tools:background="@android:color/holo_red_dark" />
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        support:counterEnabled="true"
+        support:errorEnabled="true"
+        support:counterMaxLength="@integer/number_of_allowed_characters_for_competition_name">
+
+        <EditText
+            android:id="@+id/txtCompetitionName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/competition_name_hint_message"
+            android:inputType="textPersonName"
+            tools:text="StranaRunner 2016"/>
+
+    </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnStartCounter"
         android:src="@drawable/ic_btn_start_competition"
-        android:layout_gravity="bottom|right"/>
+        android:layout_gravity="bottom|right"
+        android:visibility="invisible"
+        support:borderWidth="0dp"
+        support:elevation="12dp"
+        tools:visibility="visible"/>
 </android.support.design.widget.CoordinatorLayout>

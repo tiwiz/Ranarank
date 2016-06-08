@@ -17,6 +17,10 @@ android {
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
+        debug {
+            // Run code coverage reports by default on debug builds.
+            testCoverageEnabled = true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -26,6 +30,13 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // Always show the result of every unit test, even if it passes.
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+        }
     }
 }
 
@@ -38,9 +49,8 @@ dependencies {
     compile "io.reactivex:rxandroid:$rootProject.ext.rxandroidAndroid"
     compile "io.reactivex:rxjava:$rootProject.ext.rxjavaVersion"
     compile "com.jakewharton.rxbinding:rxbinding:$rootProject.ext.rxbindingVersion"
-    compile "com.jakewharton.rxbinding:rxbinding-design:$rootProject.ext.rxbindingVersion"
     compile "com.jakewharton.rxbinding:rxbinding-recyclerview-v7:$rootProject.ext.rxbindingVersion"
-    compile "com.google.android.gms:play-services:$rootProject.ext.gcmVersion"
+    compile "com.google.android.gms:play-services-wearable:$rootProject.ext.gcmVersion"
     compile "com.google.firebase:firebase-database:$rootProject.ext.gcmVersion"
 
     //ButterKnife
@@ -59,13 +69,34 @@ dependencies {
     // Android Testing Support Library's runner and rules
     androidTestCompile "com.android.support.test:runner:$rootProject.ext.runnerVersion"
     androidTestCompile "com.android.support.test:rules:$rootProject.ext.rulesVersion"
-    androidTestCompile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
-    androidTestCompile "com.android.support:design:$rootProject.ext.supportLibraryVersion"
 
     // Espresso UI Testing dependencies.
     androidTestCompile "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
     androidTestCompile "com.android.support.test.espresso:espresso-contrib:$rootProject.ext.espressoVersion"
     androidTestCompile "com.android.support.test.espresso:espresso-intents:$rootProject.ext.espressoVersion"
+}
+
+/*
+Resolves dependency versions across test and production APKs, specifically, transitive
+dependencies. This is required since Espresso internally has a dependency on support-annotations.
+*/
+configurations.all {
+    resolutionStrategy.force "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
+    resolutionStrategy.force "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    resolutionStrategy.force "com.android.support:design:$rootProject.supportLibraryVersion"
+}
+
+/*
+All direct/transitive dependencies shared between your test and production APKs need to be
+excluded from the test APK! This is necessary because both APKs will contain the same classes. Not
+excluding these dependencies from your test configuration will result in an dex pre-verifier error
+at runtime. More info in this tools bug: (https://code.google.com/p/android/issues/detail?id=192497)
+*/
+configurations.compile.dependencies.each { compileDependency ->
+    println "Excluding compile dependency: ${compileDependency.getName()}"
+    configurations.androidTestCompile.dependencies.each { androidTestCompileDependency ->
+        configurations.androidTestCompile.exclude module: "${compileDependency.getName()}"
+    }
 }
 
 String getJavaHome(String version) {
