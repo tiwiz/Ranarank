@@ -9,15 +9,8 @@ public class MainContract {
      * fields for choosing the name of the competition and start the counter.
      */
     public interface View {
-        /**
-         * Whenever a new competition is started, this method is invoked, so that the View can
-         * change its layout accordingly
-         */
-        void onNewCompetitionCreated(String competitionName);
 
-        void onCompetitionNameVerified();
-
-        void onCompetitionNameInvalid();
+        void createCompetition();
     }
 
     /**

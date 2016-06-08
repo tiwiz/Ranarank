@@ -2,6 +2,8 @@ package net.orgiu.ranarank2.main;
 
 import android.support.annotation.NonNull;
 
+import net.orgiu.ranarank2.utils.StringUtils;
+
 
 public class MainPresenter implements MainContract.Presenter{
     private MainContract.Model model;
@@ -12,6 +14,10 @@ public class MainPresenter implements MainContract.Presenter{
 
     @Override
     public void onNewCompetitionCreated(@NonNull String competitionName) {
-        model.onNewCompetitionCreated(competitionName);
+        if (StringUtils.isValid(competitionName)) {
+            model.onNewCompetitionCreated(competitionName);
+        } else {
+            throw new RuntimeException("Competition name should be long at least 3 characters");
+        }
     }
 }

@@ -1,0 +1,13 @@
+package net.orgiu.ranarank2.utils;
+
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+
+public class StringUtils {
+
+    private static final int NAME_MINIMAL_LENGTH = 3;
+
+    public static boolean isValid(@Nullable CharSequence name) {
+        return !TextUtils.isEmpty(name) && name.length() > NAME_MINIMAL_LENGTH;
+    }
+}
