@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        presenter = new MainPresenter(new MainModel());
+        presenter = new MainPresenter(new MainModel(RanaApp.getStorage()));
         view = new MainView(findViewById(android.R.id.content), presenter);
     }
 }
