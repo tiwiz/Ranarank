@@ -1,4 +1,4 @@
-package net.orgiu.common.main;
+package net.orgiu.ranarank2.main;
 
 import android.support.annotation.NonNull;
 

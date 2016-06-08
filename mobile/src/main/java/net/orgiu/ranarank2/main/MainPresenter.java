@@ -1,8 +1,6 @@
-package net.orgiu.common.main;
+package net.orgiu.ranarank2.main;
 
 import android.support.annotation.NonNull;
-
-import net.orgiu.common.repository.RepositoryContract;
 
 
 public class MainPresenter implements MainContract.Presenter{

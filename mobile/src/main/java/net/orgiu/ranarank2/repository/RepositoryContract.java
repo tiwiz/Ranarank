@@ -1,4 +1,4 @@
-package net.orgiu.common.repository;
+package net.orgiu.ranarank2.repository;
 
 public class RepositoryContract {
 
