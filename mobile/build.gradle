@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'android-apt'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -35,6 +36,10 @@ dependencies {
     compile "com.jakewharton.rxbinding:rxbinding-recyclerview-v7:$rootProject.ext.rxbindingVersion"
     compile "com.google.android.gms:play-services:$rootProject.ext.gcmVersion"
     compile "com.google.firebase:firebase-database:$rootProject.ext.gcmVersion"
+
+    //ButterKnife
+    compile 'com.jakewharton:butterknife:8.0.1'
+    apt 'com.jakewharton:butterknife-compiler:8.0.1'
 
     compile "com.android.support.test.espresso:espresso-idling-resource:$rootProject.ext.espressoVersion"
 
