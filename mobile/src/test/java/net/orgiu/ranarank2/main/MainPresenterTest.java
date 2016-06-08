@@ -1,21 +1,12 @@
 package net.orgiu.ranarank2.main;
 
-import android.text.TextUtils;
-
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
 
 import static org.mockito.Mockito.verify;
 
-@RunWith(PowerMockRunner.class)
-@PrepareForTest({TextUtils.class})
 public class MainPresenterTest {
 
     @Mock
@@ -29,7 +20,6 @@ public class MainPresenterTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        PowerMockito.mockStatic(TextUtils.class);
         presenter = new MainPresenter(mockModel);
     }
 

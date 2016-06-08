@@ -8,6 +8,6 @@ public class StringUtils {
     private static final int NAME_MINIMAL_LENGTH = 3;
 
     public static boolean isValid(@Nullable CharSequence name) {
-        return !TextUtils.isEmpty(name) && name.length() > NAME_MINIMAL_LENGTH;
+        return name != null && name.length() > NAME_MINIMAL_LENGTH;
     }
 }
