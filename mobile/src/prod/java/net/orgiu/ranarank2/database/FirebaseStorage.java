@@ -17,6 +17,7 @@ public class FirebaseStorage implements DataStorage {
     private final static String NAME_KEY = "name";
     private final static String COUNT_KEY = "count";
 
+    private String competitionName;
 
     public FirebaseStorage() {
         reference = FirebaseDatabase.getInstance().getReference();
@@ -31,7 +32,13 @@ public class FirebaseStorage implements DataStorage {
 
     @Override
     public void addNewCompetition(@NonNull String competitionName) {
+        this.competitionName = competitionName;
         reference.child(rootkey).child(NAME_KEY).setValue(competitionName);
         reference.child(rootkey).child(COUNT_KEY).setValue(0);
+    }
+
+    @Override
+    public String getCompetitionName() {
+        return competitionName;
     }
 }

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">RanaRank</string>
     <string name="competition_name_hint_message">Insert competition name</string>
+    <string name="title_activity_chronometer">Chronometer</string>
 </resources>
