@@ -17,6 +17,6 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
         presenter = new MainPresenter(new MainModel(RanaApp.getStorage()));
-        view = new MainView(findViewById(android.R.id.content), presenter);
+        view = new MainView(this, presenter);
     }
 }

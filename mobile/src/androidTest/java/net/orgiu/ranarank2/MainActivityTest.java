@@ -1,9 +1,12 @@
 package net.orgiu.ranarank2;
 
-import android.support.test.espresso.core.deps.guava.util.concurrent.ExecutionError;
+import android.support.test.espresso.matcher.BoundedMatcher;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.support.v7.widget.Toolbar;
 
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,8 +16,10 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 
 @RunWith(AndroidJUnit4.class)
@@ -47,8 +52,24 @@ public class MainActivityTest {
         onView(withId(R.id.txtCompetitionName)).perform(typeText(VALID_NAME), closeSoftKeyboard());
         onView(withId(R.id.btnStartCounter)).perform(click());
 
-        String actualName = RanaApp.getStorage().getCompetitionName();
+        onView(withId(R.id.chronometerToolbar))
+                .check(matches(isDisplayed()))
+                .check(matches(isAssignableFrom(Toolbar.class)))
+                .check(matches(withTitle(is(VALID_NAME))));
+    }
 
-        if (!actualName.equals(VALID_NAME)) throw new Exception("ERROR: was expecting \"" + VALID_NAME + "\" but it was \"" + actualName + "\"");
+    private static Matcher<Object> withTitle(final Matcher<CharSequence> titleMatcher) {
+        return new BoundedMatcher<Object, Toolbar>(Toolbar.class) {
+            @Override
+            public void describeTo(Description description) {
+                description.appendText("with toolbar title: ");
+                titleMatcher.describeTo(description);
+            }
+
+            @Override
+            protected boolean matchesSafely(Toolbar toolbar) {
+                return titleMatcher.matches(toolbar.getTitle());
+            }
+        };
     }
 }
