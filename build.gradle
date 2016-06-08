@@ -45,4 +45,5 @@ ext {
     rxandroidAndroid = '1.2.0'
     rxbindingVersion = '0.4.0'
     gcmVersion = '9.0.0'
+    jodaVersion = '2.9.3.1'
 }
