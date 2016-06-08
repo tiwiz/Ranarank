@@ -18,7 +18,7 @@
         support:errorEnabled="true"
         support:counterMaxLength="@integer/number_of_allowed_characters_for_competition_name">
 
-        <EditText
+        <android.support.design.widget.TextInputEditText
             android:id="@+id/txtCompetitionName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
