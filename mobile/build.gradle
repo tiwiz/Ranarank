@@ -30,8 +30,11 @@ dependencies {
     compile "com.android.support:design:$rootProject.ext.supportLibraryVersion"
     compile "io.reactivex:rxandroid:$rootProject.ext.rxandroidAndroid"
     compile "io.reactivex:rxjava:$rootProject.ext.rxjavaVersion"
-    compile 'com.google.android.gms:play-services:9.0.0'
-    compile 'com.google.firebase:firebase-database:9.0.0'
+    compile "com.jakewharton.rxbinding:rxbinding:$rootProject.ext.rxbindingVersion"
+    compile "com.jakewharton.rxbinding:rxbinding-design:$rootProject.ext.rxbindingVersion"
+    compile "com.jakewharton.rxbinding:rxbinding-recyclerview-v7:$rootProject.ext.rxbindingVersion"
+    compile "com.google.android.gms:play-services:$rootProject.ext.gcmVersion"
+    compile "com.google.firebase:firebase-database:$rootProject.ext.gcmVersion"
 
     compile "com.android.support.test.espresso:espresso-idling-resource:$rootProject.ext.espressoVersion"
 

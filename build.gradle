@@ -41,4 +41,6 @@ ext {
     espressoVersion = '2.2.2'
     rxjavaVersion = '1.1.5'
     rxandroidAndroid = '1.2.0'
+    rxbindingVersion = '0.4.0'
+    gcmVersion = '9.0.0'
 }
