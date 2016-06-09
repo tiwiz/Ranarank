@@ -11,5 +11,34 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="net.orgiu.ranarank2.ChronometerActivity"
     tools:showIn="@layout/activity_chronometer">
+    
+    <TextView
+        android:id="@+id/txtCounter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="64sp"
+        tools:text="23:59:59"/>
+
+    <ImageView
+        android:id="@+id/imgRunner"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_runner"
+        android:tint="@color/colorAccent"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="32dp"
+        android:layout_below="@id/txtCounter"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_toEndOf="@id/imgRunner"
+        android:layout_alignTop="@id/imgRunner"
+        android:textSize="36sp"
+        android:gravity="center_vertical"
+        android:layout_marginStart="16dp"
+        tools:text="999"/>
+
 
 </RelativeLayout>
